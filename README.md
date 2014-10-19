@@ -1,0 +1,4 @@
+GDA
+===
+
+Golem Data Analyser
