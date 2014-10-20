@@ -1,4 +1,5 @@
-.DS_Store
+<<<<<<< HEAD
+cd.DS_Store
 *.class
 
 # Package Files #
@@ -31,3 +32,17 @@ war/WEB-INF/appengine-generated/
 *.api
 *.discovery
 endpoints-libs/
+=======
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+>>>>>>> c308c756bbca6eb7044ad2148edd3c95bd4d1f9e
