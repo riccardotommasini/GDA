@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datastore-indexes autoGenerate="true">
+	<datastore-index kind="MCData" ancestor="true" source="manual">
+		<property name="measureDate" direction="asc" />
+		<property name="minutes" direction="asc" />
+	</datastore-index>
+	<datastore-index kind="MCData" ancestor="false" source="manual">
+        <property name="measureDate" direction="asc"/>
+        <property name="minutes" direction="desc"/>
+    </datastore-index>
+    <datastore-index kind="MCData" ancestor="true" source="manual">
+		<property name="measureDate" direction="asc" />
+		<property name="minutes" direction="asc" />
+	</datastore-index>
+	<datastore-index kind="MCData" ancestor="false" source="manual">
+        <property name="measureDate" direction="asc"/>
+        <property name="minutes" direction="desc"/>
+    </datastore-index>
+	<datastore-index kind="Event" ancestor="false" source="manual">
+        <property name="^i" direction="asc"/>
+        <property name="fileDate" direction="desc"/>
+    </datastore-index>
+     <datastore-index kind="Event" ancestor="false" source="manual">
+        <property name="^i" direction="asc"/>
+        <property name="received" direction="asc"/>
+    </datastore-index>
+    <datastore-index kind="Benchmark" ancestor="true" source="manual">
+        <property name="name" direction="asc"/>
+    </datastore-index>
+</datastore-indexes>

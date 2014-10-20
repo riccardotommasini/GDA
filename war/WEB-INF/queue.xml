@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<queue-entries>
+	<queue>
+		<name>default</name>
+		<rate>20/s</rate>
+	</queue>
+	<queue>
+		<name>line-queue</name>
+		<rate>20/s</rate>
+		<max-concurrent-requests>10</max-concurrent-requests>
+	</queue>
+	<queue>
+		<name>alarm-queue</name>
+		<rate>5/s</rate>
+	</queue>
+	<queue>
+		<name>clean</name>
+		<rate>20/s</rate>
+		<max-concurrent-requests>10</max-concurrent-requests>
+	</queue>
+</queue-entries>

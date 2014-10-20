@@ -1,0 +1,19 @@
+<%@tag description="Line Head"%>
+<thead>
+		<tr>
+			<th>Country</th>
+			<th>Customer</th>
+			<th>Minutes</th>
+			<th>ARSV</th>
+			<th>ACDV</th>
+			<th>ACDA</th>
+			<th>Buy</th>
+			<th>Sell</th>
+			<th>Revenue</th>
+			<th>Gp_percent</th>
+			<th>Gp</th>
+			<th>Delta</th>
+			<th>On</th>
+			<th>Block</th>
+	</tr>
+</thead>
