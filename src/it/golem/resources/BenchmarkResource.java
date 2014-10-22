@@ -7,6 +7,7 @@ import it.golem.model.benchmark.Benchmark;
 import java.util.List;
 
 import com.googlecode.objectify.Key;
+import com.googlecode.objectify.Ref;
 
 public class BenchmarkResource {
 
@@ -19,8 +20,8 @@ public class BenchmarkResource {
 	public static List<Benchmark> getAll() {
 		return OfyService.getAll(clazz).list();
 	}
-	
-	public static List<Benchmark> get(Route route){
+
+	public static List<Benchmark> get(Route route) {
 		return OfyService.query(clazz, route).list();
 	}
 
@@ -37,15 +38,18 @@ public class BenchmarkResource {
 		OfyService.delete(e);
 	}
 
+	public static void delete(Ref<Route> parent, String id) {
+		Void res = OfyService.ofy().delete().type(clazz).parent(parent).id(id)
+				.now();
+	}
+
 	public static <T> T get(Class<T> class1, String benchmarkName) {
-		return OfyService.getAll(class1).filter("name", benchmarkName).first().safe();
+		return OfyService.getAll(class1).filter("name", benchmarkName).first()
+				.now();
 	}
 
 	public static Benchmark get(String name) {
-		if( OfyService.query(clazz, "name", name).count()>0)
-			return OfyService.query(clazz, "name", name).first().safe();
-		else
-			return null;
+		return OfyService.query(clazz, "name", name).first().now();
 	}
 
 	public static List<Benchmark> get(Route route, boolean active) {

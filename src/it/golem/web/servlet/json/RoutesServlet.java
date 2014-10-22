@@ -44,24 +44,7 @@ public class RoutesServlet extends Controller {
 		Map<Integer, List<Route>> routesMap = new HashMap<Integer, List<Route>>();
 		_log.info(files.size() + "");
 		for (Integer day : files.keySet()) {
-			FileEvent fe = files.get(day);
-			List<Ref<Route>> refRouteOrder = fe.getRouteOrder();
-			List<Route> routeOrder = new ArrayList<Route>();
-			if (refRouteOrder.isEmpty()) {
-				routeOrder = RouteResource.get(fe.getFileDate());
-				for (Route r : routeOrder) {
-					refRouteOrder.add(Ref.create(r));
-				}
-
-				fe.setRouteOrder(refRouteOrder);
-
-				CacheService.caching("routeOrder", routeOrder);
-				FileEventResource.put(fe);
-			} else {
-				for (Ref<Route> rr : refRouteOrder) {
-					routeOrder.add(rr.get());
-				}
-			}
+			List<Route> routeOrder = updateRouteOrder(files, day);
 			routesMap.put(day, routeOrder);
 
 		}
@@ -69,5 +52,28 @@ public class RoutesServlet extends Controller {
 		nav.setContentType("application/json");
 		JSONFactory.writeJSON(nav.getWriter(), routesMap);
 
+	}
+
+	private List<Route> updateRouteOrder(Map<Integer, FileEvent> files,
+			Integer day) {
+		FileEvent fe = files.get(day);
+		List<Ref<Route>> refRouteOrder = fe.getRouteOrder();
+		List<Route> routeOrder = new ArrayList<Route>();
+		if (refRouteOrder.isEmpty()) {
+			routeOrder = RouteResource.get(fe.getFileDate());
+			for (Route r : routeOrder) {
+				refRouteOrder.add(Ref.create(r));
+			}
+
+			fe.setRouteOrder(refRouteOrder);
+
+			CacheService.caching("routeOrder", routeOrder);
+			FileEventResource.put(fe);
+		} else {
+			for (Ref<Route> rr : refRouteOrder) {
+				routeOrder.add(rr.get());
+			}
+		}
+		return routeOrder;
 	}
 }

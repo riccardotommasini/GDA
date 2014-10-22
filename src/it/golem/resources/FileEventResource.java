@@ -55,9 +55,13 @@ public class FileEventResource {
 	}
 
 	public static Map<Integer, FileEvent> getOrder(Integer... days) {
+		DateTime from = new LocalDate().toDateTimeAtStartOfDay();
 		Map<Integer, FileEvent> map = new HashMap<Integer, FileEvent>();
 		for (Integer day : days) {
-			FileEvent e = getLast(day);
+			_log.info(from.plusDays(day + 1).toString());
+			FileEvent e = OfyService
+					.query(clazz, "received <", from.plusDays(day + 1))
+					.order("-received").first().now();
 			if (e != null)
 				map.put(day, e);
 		}

@@ -96,6 +96,11 @@
 									  <input type="radio" name="always_plot" value="">Enabled<br>
 									  <input type="radio" name="always_plot" value="">Disabled<br>
 						            </div>
+						            <div>
+						              <button class="btn btn-primary" onClick=editBenchmark()>Update</button>
+									  <button class="btn btn-primary" onClick=deleteBenchmark()>Delete</button>
+						            </div>
+						            
 								</div>
 							</div>
 						<!-- Panel Benchmark End -->

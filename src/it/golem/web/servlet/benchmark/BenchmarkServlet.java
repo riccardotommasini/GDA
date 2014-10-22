@@ -36,6 +36,7 @@ public class BenchmarkServlet extends Controller {
 
 	@Override
 	protected void post(Navigation nav) throws IOException, ServletException {
+
 		boolean activation = asBoolean(nav.getParam("activation"));
 		boolean alwaysPlot = asBoolean(nav.getParam("alwaysplot"));
 		Benchmark b = BenchmarkResource

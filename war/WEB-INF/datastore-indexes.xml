@@ -24,6 +24,10 @@
         <property name="^i" direction="asc"/>
         <property name="received" direction="asc"/>
     </datastore-index>
+    <datastore-index kind="Event" ancestor="false" source="manual">
+        <property name="^i" direction="asc"/>
+        <property name="received" direction="desc"/>
+    </datastore-index>
     <datastore-index kind="Benchmark" ancestor="true" source="manual">
         <property name="name" direction="asc"/>
     </datastore-index>

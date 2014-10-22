@@ -39,7 +39,7 @@
 		<servlet-name>WorkerServlet</servlet-name>
 		<url-pattern>/worker</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>AlarmServlet</servlet-name>
 		<servlet-class>it.golem.web.servlet.queue.AlarmServlet</servlet-class>
@@ -195,6 +195,15 @@
 		<url-pattern>/events/email</url-pattern>
 	</servlet-mapping>
 	<!-- BENCHMARK -->
+
+	<servlet>
+		<servlet-name>DeleteBenchmarkServlet</servlet-name>
+		<servlet-class>it.golem.web.servlet.benchmark.DeleteBenchmarkServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteBenchmarkServlet</servlet-name>
+		<url-pattern>/benchmark/delete</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>BenchmarkServlet</servlet-name>
 		<servlet-class>it.golem.web.servlet.benchmark.BenchmarkServlet</servlet-class>

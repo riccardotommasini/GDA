@@ -119,7 +119,7 @@ function plot(jdata, country, customer, graph, day, id, suffix) {
 				}
 				console.log(route);
 				yserie.push({
-					name :  customer +" "+ country +" day " + day,
+					name : customer + " " + country + " day " + day,
 					data : numbers
 				});
 			});
@@ -246,7 +246,8 @@ function bcall(country, customer) {
 					value : name
 				});
 			});
-
+			console.log(options_active)
+			console.log(options_disabled)
 			$.each(json["toplot"], function(index, benchmark) {
 				benchmarkPlot(benchmark['measures'], $('#sampleTabs>.active')
 						.text(), 'graph');
@@ -254,7 +255,7 @@ function bcall(country, customer) {
 
 			$("#benchmarks").multiselect('dataprovider', options_active);
 			$("#benchmakr_scope").multiselect('dataprovider', options_active);
-
+			$("#benchmakr_scope").multiselect('dataprovider', options_disabled);
 			$("#benchmarks").multiselect('dataprovider', options_disabled);
 
 		}, 2000);
@@ -567,4 +568,30 @@ function buttonChange(jb, ref) {
 		changeButtonText("alwaysbutton_" + ref, "Always");
 	else
 		changeButtonText("alwaysbutton", "OnDemand");
+}
+function editBenchmark() {
+	var active = $('#benchmark_active:checked').val();
+	var alwaysPlot = $('#always_plot:checked').val();
+	var id = $("#benchmakr_scope").val()
+	$.ajax({
+		url : "/benchmark/update?id=" + id + "&activation=" + active
+				+ "&alwaysplot=" + alwaysPlot,
+		type : 'POST',
+		success : function() {
+			bcall();
+		}
+	});
+
+}
+function deleteBenchmark() {
+	var id = $("#benchmakr_scope").val()
+	console.log(id);
+	$.ajax({
+		url : "/benchmark/delete?id=" + id,
+		type : 'POST',
+		success : function() {
+			console.log("deleted "+id)
+		}
+	});
+
 }

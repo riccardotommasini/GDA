@@ -34,7 +34,9 @@ public class MCDataResource {
 	}
 
 	public static List<MCData> getAllReceived(Integer day, Route r) {
-		DateTime today = new LocalDate().toDateTimeAtStartOfDay().plusDays(1);
+		DateTime today = new LocalDate().toDateTimeAtStartOfDay();
+		_log.info(today.minusDays(day).toString());
+		_log.info(today.plusDays(day + 1).toString());
 		List<MCData> list = OfyService
 				.query(clazz, r, "measureDate >", (today.minusDays(day)))
 				.filter("measureDate <", (today.plusDays(day + 1)))
